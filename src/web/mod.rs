@@ -1,8 +1,13 @@
 mod example;
 mod index;
 
-use axum::Router;
+use axum::{
+    extract::{MatchedPath, Request},
+    Router,
+};
 use core::net::SocketAddr;
+use tower_http::trace::TraceLayer;
+use tracing::info_span;
 
 use crate::state::AppState;
 
@@ -29,7 +34,25 @@ impl WebServer {
         let app = Router::new()
             .nest("/", index::router())
             .nest("/example", example::router())
-            .with_state(self.state);
+            .with_state(self.state)
+            .layer(
+                TraceLayer::new_for_http().make_span_with(|request: &Request<_>| {
+                    // Log the matched route's path (with placeholders not filled in).
+                    // Use request.uri() or OriginalUri if you want the real path.
+                    let map = request
+                        .extensions()
+                        .get::<MatchedPath>()
+                        .map(MatchedPath::as_str);
+                    let matched_path = map;
+
+                    info_span!(
+                        "http",
+                        method = ?request.method(),
+                        matched_path,
+                    )
+                }),
+            );
+
         let listener = tokio::net::TcpListener::bind(self.address).await?;
         axum::serve(listener, app).await?;
         Ok(())

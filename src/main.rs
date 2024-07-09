@@ -2,12 +2,33 @@ mod error;
 pub(self) mod state;
 mod web;
 
-use std::{net::SocketAddr, str::FromStr as _};
+use std::{io::IsTerminal as _, net::SocketAddr, str::FromStr as _};
+
+use tracing_subscriber::EnvFilter;
 
 use crate::state::AppState;
 
+fn init_tracing() {
+    tracing_subscriber::fmt()
+        .with_ansi(std::io::stdout().is_terminal())
+        .with_env_filter(
+            EnvFilter::from_default_env()
+                // Without explicitly disabling the `r1cs` target, the ZK proof implementations
+                // will spend an enormous amount of CPU and memory building useless tracing output.
+                .add_directive(
+                    "r1cs=off"
+                        .parse()
+                        .expect("rics=off is a valid filter directive"),
+                ),
+        )
+        .with_writer(std::io::stderr)
+        .init();
+}
+
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    init_tracing();
+
     let state =
         AppState::create("postgresql://localhost:5432/penumbra_raw?sslmode=disable").await?;
     let address = SocketAddr::from_str("[::]:1234")?;
