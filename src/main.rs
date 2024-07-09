@@ -1,4 +1,5 @@
 mod error;
+mod indexer;
 pub(self) mod state;
 mod web;
 
@@ -32,5 +33,11 @@ async fn main() -> anyhow::Result<()> {
     let state =
         AppState::create("postgresql://localhost:5432/penumbra_raw?sslmode=disable").await?;
     let address = SocketAddr::from_str("[::]:1234")?;
-    web::WebServer::new(state, address).run().await
+    let web_server_handle = tokio::spawn(web::WebServer::new(state, address).run());
+    let indexer_handle = indexer::Indexer::new().run();
+
+    tokio::select! {
+        x = web_server_handle => x?,
+        x = indexer_handle => x
+    }
 }
