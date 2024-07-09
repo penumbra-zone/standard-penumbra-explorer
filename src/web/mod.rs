@@ -1,3 +1,4 @@
+mod blocks;
 mod example;
 mod index;
 
@@ -34,6 +35,7 @@ impl WebServer {
         let app = Router::new()
             .nest("/", index::router())
             .nest("/example", example::router())
+            .nest("/history/blocks", blocks::router())
             .with_state(self.state)
             .layer(
                 TraceLayer::new_for_http().make_span_with(|request: &Request<_>| {

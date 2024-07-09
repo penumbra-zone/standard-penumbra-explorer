@@ -1,19 +1,40 @@
 use axum::async_trait;
 use pindexer::{AppView, ContextualizedEvent, PgPool, PgTransaction};
+use serde::{Deserialize, Serialize};
 use sqlx::types::chrono::{DateTime, Utc};
+
+/// Implement a block
+#[derive(Debug, Clone, Copy, sqlx::FromRow, Serialize, Deserialize)]
+pub struct Block {
+    pub height: i64,
+    pub transaction_count: i64,
+    pub created_at: DateTime<Utc>,
+}
 
 /// A component for indexing and retrieving information about blocks.
 #[derive(Debug, Clone, Copy)]
-pub struct Block {}
+pub struct Component {}
 
-impl Block {
+impl Component {
     pub fn new() -> Self {
         Self {}
+    }
+
+    /// Fetch a list of blocks.
+    ///
+    /// This will be sorted in reverse reverse order, by default.
+    pub async fn blocks(pool: &PgPool, limit: u64) -> anyhow::Result<Vec<Block>> {
+        Ok(
+            sqlx::query_as("SELECT * FROM block ORDER BY height DESC LIMIT $1;")
+                .bind(i64::try_from(limit)?)
+                .fetch_all(pool)
+                .await?,
+        )
     }
 }
 
 #[async_trait]
-impl AppView for Block {
+impl AppView for Component {
     async fn init_chain(&self, dbtx: &mut PgTransaction) -> Result<(), anyhow::Error> {
         sqlx::query(include_str!("block.sql"))
             .execute(dbtx.as_mut())
