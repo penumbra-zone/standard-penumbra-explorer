@@ -3,21 +3,20 @@ mod index;
 
 use axum::Router;
 use core::net::SocketAddr;
-use core::str::FromStr;
+
+use crate::state::AppState;
 
 /// Represents the configuration of the web server.
 ///
 /// This is the entry point to the frontend, and running it will serve the web pages.
-#[derive(Clone)]
 pub struct WebServer {
     address: SocketAddr,
+    state: AppState,
 }
 
 impl WebServer {
-    pub fn new() -> Self {
-        Self {
-            address: SocketAddr::from_str("[::]:1234").unwrap(),
-        }
+    pub fn new(state: AppState, address: SocketAddr) -> Self {
+        Self { state, address }
     }
 
     #[allow(dead_code)]
@@ -29,7 +28,8 @@ impl WebServer {
     pub async fn run(self) -> anyhow::Result<()> {
         let app = Router::new()
             .nest("/", index::router())
-            .nest("/example", example::router());
+            .nest("/example", example::router())
+            .with_state(self.state);
         let listener = tokio::net::TcpListener::bind(self.address).await?;
         axum::serve(listener, app).await?;
         Ok(())
