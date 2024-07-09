@@ -1,9 +1,10 @@
-mod state;
+mod error;
+pub(self) mod state;
 mod web;
 
 use std::{net::SocketAddr, str::FromStr as _};
 
-pub(crate) use state::AppState;
+use crate::state::AppState;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

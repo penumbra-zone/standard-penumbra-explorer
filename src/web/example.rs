@@ -1,6 +1,7 @@
-use axum::{extract::State, http::StatusCode, routing::get, Json, Router};
+use axum::{extract::State, routing::get, Json, Router};
 use serde::{Deserialize, Serialize};
 
+use crate::error::Result;
 use crate::state::AppState;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -8,7 +9,7 @@ struct TestResponse {
     height: u64,
 }
 
-async fn fetch_height(state: &AppState) -> anyhow::Result<u64> {
+async fn fetch_height(state: &AppState) -> Result<u64> {
     let (height,): (i64,) = sqlx::query_as("SELECT max(height) FROM blocks;")
         .fetch_one(state.pool())
         .await?;
@@ -16,10 +17,8 @@ async fn fetch_height(state: &AppState) -> anyhow::Result<u64> {
     Ok(height)
 }
 
-async fn handler(State(state): State<AppState>) -> Result<Json<TestResponse>, StatusCode> {
-    let height = fetch_height(&state)
-        .await
-        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+async fn handler(State(state): State<AppState>) -> Result<Json<TestResponse>> {
+    let height = fetch_height(&state).await?;
     Ok(Json(TestResponse { height }))
 }
 

@@ -1390,6 +1390,7 @@ dependencies = [
  "anyhow",
  "axum",
  "serde",
+ "serde_json",
  "sqlx",
  "tokio",
 ]
