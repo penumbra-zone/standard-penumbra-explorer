@@ -1,3 +1,4 @@
+mod component;
 mod error;
 mod indexer;
 pub(self) mod state;

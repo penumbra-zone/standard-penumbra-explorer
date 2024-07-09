@@ -9,7 +9,7 @@ impl Indexer {
     }
 
     pub async fn run(self) -> anyhow::Result<()> {
-        let indexer = pindexer::Indexer::new();
+        let indexer = pindexer::Indexer::new().with_index(crate::component::Block::new());
         Mutex::new(indexer).into_inner().run().await?;
 
         Ok(())
