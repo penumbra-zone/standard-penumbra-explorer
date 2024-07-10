@@ -31,8 +31,7 @@ fn init_tracing() {
 async fn main() -> anyhow::Result<()> {
     init_tracing();
 
-    let state =
-        AppState::create("postgresql://localhost:5432/penumbra?sslmode=disable").await?;
+    let state = AppState::create("postgresql://localhost:5432/penumbra?sslmode=disable").await?;
     let address = SocketAddr::from_str("[::]:1234")?;
     let web_server_handle = tokio::spawn(web::WebServer::new(state, address).run());
     let indexer_handle = indexer::Indexer::new().run();

@@ -1,4 +1,5 @@
 mod blocks;
+mod common;
 mod example;
 mod index;
 
