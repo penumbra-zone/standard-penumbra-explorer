@@ -1,4 +1,5 @@
 [package]
+authors = ["Penumbra Labs <team@penumbra.zone>"]
 name = "standard-penumbra-explorer"
 version = "0.1.0"
 edition = "2021"
