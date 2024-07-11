@@ -7,20 +7,25 @@ use crate::state::AppState;
 
 use super::common::AcceptsJson;
 
+use crate::component::block::{Block, Component};
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 struct BlocksResponse {
-    blocks: Vec<crate::component::block::Block>,
+    blocks: Vec<Block>,
 }
 
 async fn handler(
     State(state): State<AppState>,
     AcceptsJson(json): AcceptsJson,
 ) -> Result<Response> {
-    let blocks = crate::component::block::Component::blocks(state.pool(), 20).await?;
+    let resp = BlocksResponse {
+        blocks: Component::blocks(state.pool(), 20).await?,
+    };
+
     if json {
-        Ok(Json(BlocksResponse { blocks }).into_response())
+        Ok(Json(resp).into_response())
     } else {
-        Ok(Html(serde_json::to_string(&BlocksResponse { blocks })?).into_response())
+        Ok(Html(state.render_template(Component::TEMPLATE.0, resp)?).into_response())
     }
 }
 

@@ -16,6 +16,9 @@ pub struct Block {
 pub struct Component {}
 
 impl Component {
+    pub const TEMPLATE: (&'static str, &'static str) =
+        ("block", include_str!("../../templates/blocks.html"));
+
     pub fn new() -> Self {
         Self {}
     }
