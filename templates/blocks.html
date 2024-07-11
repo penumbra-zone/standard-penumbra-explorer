@@ -1,0 +1,12 @@
+<div>
+<h1>blocks</h1>
+<table>
+{% for block in blocks %}
+  <tr>
+    <th>{{ block.height }}</th>
+    <th>{{ block.transaction_count }}</th>
+    <th>{{ block.created_at }}</th>
+  </tr>
+{% endfor %}
+</table>
+</div>

@@ -7,6 +7,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0"
 axum = { version = "0.7.5", features = ["json"] }
+include_dir = { version = "0.7" }
 minijinja = { version = "2.0" }
 pindexer = { git = "https://github.com/penumbra-zone/penumbra", branch = "pindexer-tweaks" }
 serde = { version = "1.0", features = ["derive"] }

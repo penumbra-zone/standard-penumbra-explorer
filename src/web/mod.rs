@@ -2,6 +2,7 @@ mod block;
 mod common;
 mod example;
 mod index;
+mod static_files;
 
 use axum::{
     extract::{MatchedPath, Request},
@@ -35,6 +36,7 @@ impl WebServer {
     pub async fn run(self) -> anyhow::Result<()> {
         let app = Router::new()
             .nest("/", index::router())
+            .nest("/static", static_files::router())
             .nest("/example", example::router())
             .nest("/history/blocks", block::router())
             .with_state(self.state)
