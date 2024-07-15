@@ -875,7 +875,7 @@ dependencies = [
 [[package]]
 name = "cnidarium"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -909,7 +909,7 @@ dependencies = [
 [[package]]
 name = "cnidarium-component"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -921,7 +921,7 @@ dependencies = [
 [[package]]
 name = "cometindex"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1134,7 +1134,7 @@ dependencies = [
 [[package]]
 name = "decaf377-fmd"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "ark-ff",
  "ark-serialize",
@@ -1148,7 +1148,7 @@ dependencies = [
 [[package]]
 name = "decaf377-ka"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "ark-ff",
  "decaf377",
@@ -2964,7 +2964,7 @@ checksum = "1e401f977ab385c9e4e3ab30627d6f26d00e2c73eef317493c4ec6d468726cf8"
 dependencies = [
  "cfg-if",
  "libc",
- "redox_syscall 0.5.2",
+ "redox_syscall 0.5.3",
  "smallvec",
  "windows-targets 0.52.6",
 ]
@@ -3067,7 +3067,7 @@ dependencies = [
 [[package]]
 name = "penumbra-app"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3142,7 +3142,7 @@ dependencies = [
 [[package]]
 name = "penumbra-asset"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3180,7 +3180,7 @@ dependencies = [
 [[package]]
 name = "penumbra-auction"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3232,7 +3232,7 @@ dependencies = [
 [[package]]
 name = "penumbra-community-pool"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3264,7 +3264,7 @@ dependencies = [
 [[package]]
 name = "penumbra-compact-block"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3300,7 +3300,7 @@ dependencies = [
 [[package]]
 name = "penumbra-dex"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3358,7 +3358,7 @@ dependencies = [
 [[package]]
 name = "penumbra-distributions"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -3376,7 +3376,7 @@ dependencies = [
 [[package]]
 name = "penumbra-fee"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3403,7 +3403,7 @@ dependencies = [
 [[package]]
 name = "penumbra-funding"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -3427,7 +3427,7 @@ dependencies = [
 [[package]]
 name = "penumbra-governance"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3480,7 +3480,7 @@ dependencies = [
 [[package]]
 name = "penumbra-ibc"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3517,7 +3517,7 @@ dependencies = [
 [[package]]
 name = "penumbra-keys"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "aes",
  "anyhow",
@@ -3561,7 +3561,7 @@ dependencies = [
 [[package]]
 name = "penumbra-num"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3597,7 +3597,7 @@ dependencies = [
 [[package]]
 name = "penumbra-proof-params"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ec",
@@ -3623,7 +3623,7 @@ dependencies = [
 [[package]]
 name = "penumbra-proto"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -3656,7 +3656,7 @@ dependencies = [
 [[package]]
 name = "penumbra-sct"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3692,7 +3692,7 @@ dependencies = [
 [[package]]
 name = "penumbra-shielded-pool"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3746,7 +3746,7 @@ dependencies = [
 [[package]]
 name = "penumbra-stake"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3796,7 +3796,7 @@ dependencies = [
 [[package]]
 name = "penumbra-tct"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "ark-ed-on-bls12-377",
  "ark-ff",
@@ -3824,7 +3824,7 @@ dependencies = [
 [[package]]
 name = "penumbra-tendermint-proxy"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "chrono",
@@ -3857,7 +3857,7 @@ dependencies = [
 [[package]]
 name = "penumbra-test-subscriber"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "tracing",
  "tracing-subscriber 0.3.18",
@@ -3866,7 +3866,7 @@ dependencies = [
 [[package]]
 name = "penumbra-tower-trace"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "futures",
  "hex",
@@ -3888,7 +3888,7 @@ dependencies = [
 [[package]]
 name = "penumbra-transaction"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -3940,7 +3940,7 @@ dependencies = [
 [[package]]
 name = "penumbra-txhash"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
  "blake2b_simd 1.0.2",
@@ -4002,9 +4002,10 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 [[package]]
 name = "pindexer"
 version = "0.79.0"
-source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#6f4308647705daef54b43257ad0adfd5f508cce6"
+source = "git+https://github.com/penumbra-zone/penumbra?branch=pindexer-tweaks#667226ec9d41610d9de00a6179f7b2147a03d3f8"
 dependencies = [
  "anyhow",
+ "clap",
  "cometindex",
  "penumbra-app",
  "penumbra-asset",
@@ -4350,9 +4351,9 @@ dependencies = [
 
 [[package]]
 name = "redox_syscall"
-version = "0.5.2"
+version = "0.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c82cf8cff14456045f55ec4241383baeff27af886adb72ffb2162f99911de0fd"
+checksum = "2a908a6e00f1fdd0dfd9c0eb08ce85126f6d8bbda50017e74bc4a4b7d4a926a4"
 dependencies = [
  "bitflags 2.6.0",
 ]
@@ -5202,6 +5203,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "axum 0.7.5",
+ "clap",
  "include_dir",
  "minijinja",
  "pindexer",

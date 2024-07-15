@@ -1,17 +1,18 @@
-use tokio::sync::Mutex;
-
-#[derive(Debug, Clone, Copy)]
-pub struct Indexer {}
+#[derive(Clone, Debug)]
+pub struct Indexer {
+    options: pindexer::Options,
+}
 
 impl Indexer {
-    pub fn new() -> Self {
-        Self {}
+    pub fn new(options: pindexer::Options) -> Self {
+        Self { options }
     }
 
     pub async fn run(self) -> anyhow::Result<()> {
-        let indexer =
-            pindexer::Indexer::new().with_index(crate::component::block::Component::new());
-        Mutex::new(indexer).into_inner().run().await?;
+        let indexer = pindexer::Indexer::new(self.options)
+            .with_index(pindexer::stake::ValidatorSet {})
+            .with_index(crate::component::block::Component::new());
+        indexer.run().await?;
 
         Ok(())
     }

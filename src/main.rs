@@ -6,6 +6,7 @@ mod web;
 
 use std::{io::IsTerminal as _, net::SocketAddr, str::FromStr as _};
 
+use clap::Parser;
 use tracing_subscriber::EnvFilter;
 
 use crate::state::AppState;
@@ -27,14 +28,34 @@ fn init_tracing() {
         .init();
 }
 
+#[derive(Clone, Debug, Parser)]
+struct Options {
+    /// The listening address, if the web server should be run
+    #[clap(long)]
+    web: Option<String>,
+    #[clap(flatten)]
+    indexer: pindexer::Options,
+}
+
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     init_tracing();
 
-    let state = AppState::create("postgresql://localhost:5432/penumbra?sslmode=disable").await?;
-    let address = SocketAddr::from_str("[::]:1234")?;
-    let web_server_handle = tokio::spawn(web::WebServer::new(state, address).run());
-    let indexer_handle = indexer::Indexer::new().run();
+    let opt = Options::parse();
+
+    let state = AppState::create(opt.indexer.dst_database_url.as_ref()).await?;
+    let web_server_handle = if let Some(web) = opt.web {
+        let address = SocketAddr::from_str(web.as_ref())?;
+        tokio::spawn(web::WebServer::new(state, address).run())
+    } else {
+        tokio::spawn(async {
+            loop {
+                tokio::task::yield_now().await
+            }
+        })
+    };
+
+    let indexer_handle = indexer::Indexer::new(opt.indexer).run();
 
     tokio::select! {
         x = web_server_handle => x?,
