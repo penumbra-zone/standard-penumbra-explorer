@@ -38,7 +38,11 @@ impl Component {
 
 #[async_trait]
 impl AppView for Component {
-    async fn init_chain(&self, dbtx: &mut PgTransaction) -> Result<(), anyhow::Error> {
+    async fn init_chain(
+        &self,
+        dbtx: &mut PgTransaction,
+        _app_state: &serde_json::Value,
+    ) -> Result<(), anyhow::Error> {
         sqlx::query(include_str!("block.sql"))
             .execute(dbtx.as_mut())
             .await?;

@@ -19,7 +19,7 @@ async fn handler(
     AcceptsJson(json): AcceptsJson,
 ) -> Result<Response> {
     let resp = BlocksResponse {
-        blocks: Component::blocks(state.pool(), 20).await?,
+        blocks: Component::blocks(state.pool(), 100).await?,
     };
 
     if json {
