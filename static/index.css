@@ -118,3 +118,7 @@ body {
   margin-top: 1em;
   gap: 1em;
 }
+
+.text-right {
+  text-align: right;
+}
