@@ -9,9 +9,9 @@ impl Indexer {
     }
 
     pub async fn run(self) -> anyhow::Result<()> {
-        let indexer = pindexer::Indexer::new(self.options)
-            .with_index(pindexer::stake::ValidatorSet {})
-            .with_index(crate::component::block::Component::new());
+        let mut indexer = pindexer::Indexer::new(self.options);
+        indexer = crate::component::block::Component::new().attach_to_indexer(indexer);
+        indexer = crate::component::validator::Component::new().attach_to_indexer(indexer);
         indexer.run().await?;
 
         Ok(())

@@ -7,7 +7,12 @@ use crate::component;
 fn create_environment() -> anyhow::Result<Environment<'static>> {
     let mut environment = Environment::new();
 
-    for (name, file) in [component::block::Component::TEMPLATE].into_iter() {
+    for (name, file) in [
+        component::block::Component::TEMPLATE,
+        component::validator::Component::TEMPLATE,
+    ]
+    .into_iter()
+    {
         environment.add_template(name, file)?;
     }
 

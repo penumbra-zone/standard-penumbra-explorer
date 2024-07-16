@@ -25,6 +25,10 @@ impl Component {
         Self {}
     }
 
+    pub fn attach_to_indexer(self, indexer: pindexer::Indexer) -> pindexer::Indexer {
+        indexer.with_index(Self {})
+    }
+
     /// Fetch a list of blocks.
     ///
     /// This will be sorted in reverse reverse order, by default.

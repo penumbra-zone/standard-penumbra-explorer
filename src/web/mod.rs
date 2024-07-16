@@ -3,6 +3,7 @@ mod common;
 mod example;
 mod index;
 mod static_files;
+mod validators;
 
 use axum::{
     extract::{MatchedPath, Request},
@@ -38,6 +39,7 @@ impl WebServer {
             .nest("/", index::router())
             .nest("/static", static_files::router())
             .nest("/example", example::router())
+            .nest("/current/validators", validators::router())
             .nest("/history/blocks", block::router())
             .with_state(self.state)
             .layer(
