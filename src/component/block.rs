@@ -3,6 +3,8 @@ use pindexer::{AppView, ContextualizedEvent, PgPool, PgTransaction};
 use serde::{Deserialize, Serialize};
 use sqlx::types::chrono::{DateTime, Utc};
 
+use crate::pagination::Pagination;
+
 /// Implement a block
 #[derive(Debug, Clone, Copy, sqlx::FromRow, Serialize, Deserialize)]
 pub struct Block {
@@ -26,13 +28,14 @@ impl Component {
     /// Fetch a list of blocks.
     ///
     /// This will be sorted in reverse reverse order, by default.
-    pub async fn blocks(pool: &PgPool, limit: u64) -> anyhow::Result<Vec<Block>> {
-        Ok(
-            sqlx::query_as("SELECT * FROM block ORDER BY height DESC LIMIT $1;")
-                .bind(i64::try_from(limit)?)
-                .fetch_all(pool)
-                .await?,
+    pub async fn blocks(pool: &PgPool, pagination: &Pagination<i64>) -> anyhow::Result<Vec<Block>> {
+        Ok(sqlx::query_as(
+            "SELECT * FROM block WHERE height BETWEEN $1 AND $2 ORDER BY height DESC;",
         )
+        .bind(pagination.start)
+        .bind(pagination.stop)
+        .fetch_all(pool)
+        .await?)
     }
 }
 

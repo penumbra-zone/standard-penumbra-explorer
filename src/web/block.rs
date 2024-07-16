@@ -3,6 +3,7 @@ use axum::{extract::State, routing::get, Json, Router};
 use serde::{Deserialize, Serialize};
 
 use crate::error::Result;
+use crate::pagination::Pagination;
 use crate::state::AppState;
 
 use super::common::AcceptsJson;
@@ -17,9 +18,10 @@ struct BlocksResponse {
 async fn handler(
     State(state): State<AppState>,
     AcceptsJson(json): AcceptsJson,
+    pagination: Pagination<i64>,
 ) -> Result<Response> {
     let resp = BlocksResponse {
-        blocks: Component::blocks(state.pool(), 100).await?,
+        blocks: Component::blocks(state.pool(), &pagination).await?,
     };
 
     if json {

@@ -1,6 +1,7 @@
 mod component;
 mod error;
 mod indexer;
+mod pagination;
 pub(self) mod state;
 mod web;
 
