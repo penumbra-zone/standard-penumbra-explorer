@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <link href="/static/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <div class="info-table">
+    <h1>identity</h1>
+    <table>
+    <tbody>
+      <tr>
+        <th>{{ validator.identity }}</th>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="info-table">
+    <h1>name</h1>
+    <table>
+    <tbody>
+      <tr>
+        <th>{{ validator.name }}</th>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="info-table">
+    <h1>website</h1>
+    <table>
+    <tbody>
+      <tr>
+        <th>{{ validator.website }}</th>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="info-table">
+    <h1>description</h1>
+    <table>
+    <tbody>
+      <tr>
+        <th class="long-text">{{ validator.description }}</th>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="info-table">
+    <h1>community pool contribution</h1>
+    <table>
+    <tbody>
+      <tr>
+        <th>{{ (validator.community_pool_rate_bps | float / 100) | round(2)}}%</th>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="info-table">
+    <h1>commission</h1>
+    <table>
+    <thead>
+      <tr>
+        <th>rate</th>
+        <th>address</th>
+      </tr>
+    </thead>
+    {% for stream in validator.funding_streams %}
+      <tr>
+        <th>{{ (stream.rate_bps | float / 100) | round(2) }}%</th>
+        <th>{{ stream.address }}</th>
+      </tr>
+    {% endfor %}
+    </table>
+  </div>
+</div>
+</body>
+</html>

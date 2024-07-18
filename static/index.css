@@ -105,6 +105,11 @@ body {
   color: white;
 }
 
+.info-table a {
+  color: black;
+  text-decoration: underline;
+}
+
 .info-table thead, th, h1 {
   padding: 0em 1em 0em;
 }
@@ -121,4 +126,8 @@ body {
 
 .text-right {
   text-align: right;
+}
+
+.long-text {
+  width: 60em;
 }

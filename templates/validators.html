@@ -19,8 +19,8 @@
     <tbody>
     {% for validator in validators %}
       <tr>
-        <th>{{ validator.name }}</th>
-        <th class="text-right">{{ validator.voting_power }}</th>
+        <th><a href="/current/validators/{{ validator.identity }}">{{ validator.name }}</a></th>
+        <th>{{ validator.voting_power }}</th>
         <th>{{ validator.identity }}</th>
       </tr>
     {% endfor %}

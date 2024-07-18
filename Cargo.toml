@@ -11,6 +11,7 @@ clap = { version = "3.2", features = ["derive"] }
 decaf377-rdsa = "0.11"
 include_dir = { version = "0.7" }
 minijinja = { version = "2.0" }
+penumbra-keys = { git = "https://github.com/penumbra-zone/penumbra", branch = "pindexer-tweaks" }
 penumbra-stake = { git = "https://github.com/penumbra-zone/penumbra", branch = "pindexer-tweaks" }
 pindexer = { git = "https://github.com/penumbra-zone/penumbra", branch = "pindexer-tweaks" }
 serde = { version = "1.0", features = ["derive"] }
