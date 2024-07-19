@@ -4,6 +4,7 @@ mod indexer;
 mod pagination;
 pub(self) mod state;
 mod web;
+mod sql;
 
 use std::{io::IsTerminal as _, net::SocketAddr, str::FromStr as _};
 
