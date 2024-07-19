@@ -1,5 +1,6 @@
 //! This module provides various shims for encoding penumbra domain types into Postgres.
 use anyhow::anyhow;
+use penumbra_asset::asset::Id as AssetId;
 use penumbra_num::Amount;
 // This type implements the actual arbitrary number in postgres but as decimal points.
 use sqlx::{types::BigDecimal, Decode, Encode, Postgres, Type};
@@ -76,5 +77,56 @@ impl<'q> Decode<'q, Postgres> for SQLAmount {
 impl Type<Postgres> for SQLAmount {
     fn type_info() -> <Postgres as sqlx::Database>::TypeInfo {
         BigDecimal::type_info()
+    }
+}
+
+/// Represents an [AssetId] that can be serialized and deserialized from SQL easily.
+#[derive(Debug, Clone, Copy)]
+pub struct SQLAssetId(AssetId);
+
+impl SQLAssetId {
+    pub fn new(asset_id: AssetId) -> Self {
+        Self(asset_id)
+    }
+
+    pub fn asset_id(self) -> AssetId {
+        self.0
+    }
+}
+
+impl From<AssetId> for SQLAssetId {
+    fn from(value: AssetId) -> Self {
+        Self::new(value)
+    }
+}
+
+impl From<SQLAssetId> for AssetId {
+    fn from(value: SQLAssetId) -> Self {
+        value.asset_id()
+    }
+}
+
+impl<'q> Encode<'q, Postgres> for SQLAssetId {
+    fn encode_by_ref(
+        &self,
+        buf: &mut <Postgres as sqlx::database::HasArguments<'q>>::ArgumentBuffer,
+    ) -> sqlx::encode::IsNull {
+        self.asset_id().to_bytes().encode_by_ref(buf)
+    }
+}
+
+impl<'q> Decode<'q, Postgres> for SQLAssetId {
+    fn decode(
+        value: <Postgres as sqlx::database::HasValueRef<'q>>::ValueRef,
+    ) -> Result<Self, sqlx::error::BoxDynError> {
+        let bytes = <[u8; 32]>::decode(value)?;
+        let asset_id = AssetId::try_from(bytes.as_slice())?;
+        Ok(asset_id.into())
+    }
+}
+
+impl Type<Postgres> for SQLAssetId {
+    fn type_info() -> <Postgres as sqlx::Database>::TypeInfo {
+        <[u8; 32]>::type_info()
     }
 }

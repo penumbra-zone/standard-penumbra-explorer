@@ -12,6 +12,7 @@ impl Indexer {
         let mut indexer = pindexer::Indexer::new(self.options);
         indexer = crate::component::block::Component::new().attach_to_indexer(indexer);
         indexer = crate::component::validator::Component::new().attach_to_indexer(indexer);
+        indexer = crate::component::dex::Component::new().attach_to_indexer(indexer);
         indexer.run().await?;
 
         Ok(())
